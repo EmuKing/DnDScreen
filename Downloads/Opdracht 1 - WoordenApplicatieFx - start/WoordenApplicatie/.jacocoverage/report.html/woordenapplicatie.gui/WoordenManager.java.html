@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>WoordenManager.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;WoordenApplicatie&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">woordenapplicatie.gui</a> &gt; <span class="el_source">WoordenManager.java</span></div><h1>WoordenManager.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package woordenapplicatie.gui;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
+/**
+ *
+ * @author cvdk9
+ */
+<span class="fc" id="L21">public class WoordenManager {</span>
+    public int countWords(String[] s){
+<span class="fc" id="L23">        return s.length;</span>
+    }
+    
+    public int countUniqueWords(String[] s){
+<span class="fc" id="L27">        Set&lt;String&gt; notAList = new HashSet();</span>
+<span class="fc" id="L28">        Collections.addAll(notAList, s);</span>
+<span class="fc" id="L29">        return notAList.size();</span>
+    }
+    
+    public Set&lt;String&gt; sort(String[] s){
+<span class="fc" id="L33">        Set&lt;String&gt; notAList = new HashSet();</span>
+<span class="fc" id="L34">        Collections.addAll(notAList, s);</span>
+        
+<span class="fc" id="L36">        Set&lt;String&gt; myTreeSet = new TreeSet(Collections.reverseOrder());</span>
+<span class="fc" id="L37">        myTreeSet.addAll(notAList);</span>
+        
+<span class="fc" id="L39">        return myTreeSet;</span>
+    }
+    
+    public HashMap&lt;Integer, List&lt;String&gt;&gt; wordCount(String[] strings) {
+<span class="fc" id="L43">    HashMap&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt; ();</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">    for (String s:strings) {</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if (!map.containsKey(s)) {</span>
+<span class="fc" id="L46">            map.put(s, 1);</span>
+        }
+        else {
+<span class="fc" id="L49">            int count = map.get(s);</span>
+<span class="fc" id="L50">            map.put(s, count + 1);</span>
+        }
+    }
+    
+<span class="fc" id="L54">    HashMap&lt;Integer, List&lt;String&gt;&gt; reverseMap = new HashMap&lt;Integer, List&lt;String&gt;&gt;();</span>
+    
+<span class="fc bfc" id="L56" title="All 2 branches covered.">    for(Map.Entry&lt;String, Integer&gt; entry : map.entrySet()){</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        if (!reverseMap.containsKey(entry.getValue())) {</span>
+<span class="fc" id="L58">            List&lt;String&gt; stringList = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L59">            stringList.add(entry.getKey());</span>
+<span class="fc" id="L60">            reverseMap.put(entry.getValue(), stringList);</span>
+<span class="fc" id="L61">        }</span>
+        else {
+<span class="fc" id="L63">            int count = entry.getValue();</span>
+<span class="fc" id="L64">            reverseMap.get(count).add(entry.getKey());</span>
+        }
+<span class="fc" id="L66">    }</span>
+
+        
+<span class="fc" id="L69">    return reverseMap;</span>
+    }
+    
+    public String concord(String text, String[] s){
+<span class="fc" id="L73">        String[] lines = text.split(&quot;\\n&quot;);</span>
+
+<span class="fc" id="L75">        Map&lt;String, List&lt;Integer&gt;&gt; map = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L76" title="All 2 branches covered.">        for(String w : s){</span>
+<span class="fc" id="L77">            map.put(w, new ArrayList&lt;&gt;());</span>
+        }
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        for (String key : map.keySet())</span>
+        {
+<span class="fc" id="L82">            List&lt;Integer&gt; list = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L83">            int linenumber = 1;</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            for (String line : lines) {</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">                if(line.indexOf(key) != -1)</span>
+<span class="fc" id="L86">                    list.add(linenumber);</span>
+
+<span class="fc" id="L88">                linenumber++;</span>
+            }
+<span class="fc" id="L90">            map.put(key, list);</span>
+<span class="fc" id="L91">        }</span>
+<span class="fc" id="L92">        System.out.println(map);</span>
+<span class="fc" id="L93">        return map.toString();</span>
+    }
+        
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
