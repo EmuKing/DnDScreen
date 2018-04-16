@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.MainController">
+   <children>
+      <TextField fx:id="textField_inputFileCompress" editable="false" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="656.0" />
+      <Button fx:id="button_inputFileCompress" layoutX="682.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Input (text)" />
+      <TextField fx:id="textField_outputFileCompress" editable="false" layoutX="14.0" layoutY="54.0" prefHeight="31.0" prefWidth="656.0" />
+      <Button fx:id="button_compress" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="656.0" text="Compress" />
+      <Button fx:id="button_outputFileCompress" layoutX="682.0" layoutY="54.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Output (bin)" />
+      <TextField fx:id="textField_inputFileDecompress" editable="false" layoutX="14.0" layoutY="141.0" prefHeight="31.0" prefWidth="656.0" />
+      <Button fx:id="button_inputFileDecompress" layoutX="682.0" layoutY="141.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Input (bin)" />
+      <TextField fx:id="textField_outputFileDecompress" editable="false" layoutX="14.0" layoutY="181.0" prefHeight="31.0" prefWidth="656.0" />
+      <Button fx:id="button_decompress" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="656.0" text="Decompress" />
+      <Button fx:id="button_outputFileDecompress" layoutX="682.0" layoutY="181.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="131.0" text="Output (text)" />
+   </children>
+</Pane>
