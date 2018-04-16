@@ -27,7 +27,7 @@ import org.apache.commons.io.FileUtils;
  */
 public class HuffmanCompress {
 
-    private static final Logger LOGGER = Logger.getLogger(HuffmanCompress.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(HuffmanCompress.class.getName());
     
     public void compress(final File _inputFile, final File _outputFile) {
         final char[] characters = this.handleInput(_inputFile);
@@ -54,13 +54,12 @@ public class HuffmanCompress {
         return new char[] {};
     }
     
-    private Map<Character, Integer> getFrequencyMap(final char[] _characters) {
+    public Map<Character, Integer> getFrequencyMap(final char[] _characters) {
         final Map<Character, Integer> frequencyMap = new HashMap<>();
 
         for (final Character character : _characters) {
             frequencyMap.merge(character, 1, (oldValue, newValue) -> oldValue + 1);
         }
-
         return frequencyMap;
     }
     
